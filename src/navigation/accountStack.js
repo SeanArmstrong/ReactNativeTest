@@ -1,47 +1,22 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Button from './../components/atoms/button'
 
-const AuthStack = createNativeStackNavigator();
+import AccountPage from './../components/pages/account'
+import SignInPage from './../components/pages/account/signin'
+import SignUpPage from './../components/pages/account/signup'
+import FAQSPage from './../components/pages/account/faqs'
+import PersonalDetailsPage from './../components/pages/account/personalDetails'
 
-function SignInScreen({ navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>SignIn</Text>
-      <Button
-        onPress={() => navigation.navigate('SignUpScreen')}
-        title="Register"
-      />
-      <Button
-        onPress={() => navigation.navigate('TabNavigator')}
-        title="Exit"
-      />
-    </View>
-  );
-}
-
-function SignUpScreen({ navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>SignIn</Text>
-      <Button
-        onPress={() => navigation.navigate('SignInScreen')}
-        title="Sign In"
-      />
-      <Button
-        onPress={() => navigation.navigate('TabNavigator')}
-        title="Exit"
-      />
-    </View>
-  );
-}
+const AccountStack = createNativeStackNavigator();
 
 export default function({ navigation }) {
   return (
-    <AuthStack.Navigator initialRouteName="SignInScreen">
-      <AuthStack.Screen name="SignInScreen" component={SignInScreen} />
-      <AuthStack.Screen name="SignUpScreen" component={SignUpScreen} />
-    </AuthStack.Navigator>
+    <AccountStack.Navigator initialRouteName="AccountPage">
+      <AccountStack.Screen name="AccountPage" component={AccountPage} />
+      <AccountStack.Screen name="AccountSignInPage" component={SignInPage} />
+      <AccountStack.Screen name="AccountSignUpPage" component={SignUpPage} />
+      <AccountStack.Screen name="FAQPage" component={FAQSPage} />
+      <AccountStack.Screen name="PersonalDetailsPage" component={PersonalDetailsPage} />
+    </AccountStack.Navigator>
   );
 }

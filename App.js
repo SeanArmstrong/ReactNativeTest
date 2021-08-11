@@ -2,6 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AuthStack from './src/navigation/authStack'
+import AccountStack from './src/navigation/accountStack'
 import TabStack from './src/navigation/tabNavigator'
 import OnboardingStack from './src/navigation/onboardingStack'
 import {Provider, useSelector} from 'react-redux';
@@ -21,6 +22,7 @@ function Main() {
         </RootStack.Group>
         <RootStack.Group screenOptions={{ presentation: 'modal', headerShown: false }}>
           <RootStack.Screen name="AuthScreen" component={AuthStack} />
+          <RootStack.Screen name="AccountScreen" component={AccountStack} />
         </RootStack.Group>
       </RootStack.Navigator>
     )

@@ -1,47 +1,16 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Button from './../components/atoms/button'
+
+import SignInPage from './../components/pages/auth/signin'
+import SignUpPage from './../components/pages/auth/signup'
 
 const AuthStack = createNativeStackNavigator();
 
-function SignInScreen({ navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>SignIn</Text>
-      <Button
-        onPress={() => navigation.navigate('SignUpScreen')}
-        title="Register"
-      />
-      <Button
-        onPress={() => navigation.navigate('TabNavigator')}
-        title="Exit"
-      />
-    </View>
-  );
-}
-
-function SignUpScreen({ navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>SignIn</Text>
-      <Button
-        onPress={() => navigation.navigate('SignInScreen')}
-        title="Sign In"
-      />
-      <Button
-        onPress={() => navigation.navigate('TabNavigator')}
-        title="Exit"
-      />
-    </View>
-  );
-}
-
 export default function({ navigation }) {
   return (
-    <AuthStack.Navigator initialRouteName="SignInScreen">
-      <AuthStack.Screen name="SignInScreen" component={SignInScreen} />
-      <AuthStack.Screen name="SignUpScreen" component={SignUpScreen} />
+    <AuthStack.Navigator initialRouteName="AuthSignInPage">
+      <AuthStack.Screen name="AuthSignInPage" component={SignInPage} />
+      <AuthStack.Screen name="AuthSignUpPage" component={SignUpPage} />
     </AuthStack.Navigator>
   );
 }

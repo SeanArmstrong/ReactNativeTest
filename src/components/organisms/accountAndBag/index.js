@@ -2,21 +2,12 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import Button from '../../atoms/button'
 
-export default function HowToWearDetailsPage({ route, navigation }) {
-  const { videoId } = route.params;
+export default function AccountAndBag({ route, navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>How To Wear Details</Text>
-      <Text>{ videoId }</Text>
-
+    <View>
       <Button
         title='Account'
-        onPress={ () => { navigation.push('Account', { productId: Math.round(Math.random() * 1000) }) } }
-      />
-
-      <Button
-        title='Bag'
-        onPress={ () => { navigation.push('ShoppingBag', { productId: Math.round(Math.random() * 1000) }) } }
+        onPress={ () => { navigation.push('AccountScreen', { productId: Math.round(Math.random() * 1000) }) } }
       />
     </View>
   );

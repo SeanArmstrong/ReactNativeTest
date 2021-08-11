@@ -6,12 +6,14 @@ import ProductDetailsPage from '../components/pages/productDetails';
 import ProductListingPage from '../components/pages/productListing';
 import BrandProductListingPage from '../components/pages/brandDetails';
 
+import { HeaderOptions } from './headerOptions';
+
 const HomeStack = createNativeStackNavigator();
 
 export default function({ navigation }) {
   return (
     <HomeStack.Navigator initialRouteName="HomePage">
-      <HomeStack.Screen name="HomePage" component={HomePage} />
+      <HomeStack.Screen name="HomePage" component={HomePage}  options={HeaderOptions} />
       <HomeStack.Screen name="ProductDetails" component={ProductDetailsPage} />
       <HomeStack.Screen name="ProductListing" component={ProductListingPage} />
       <HomeStack.Screen name="BrandProductListing" component={BrandProductListingPage} />
