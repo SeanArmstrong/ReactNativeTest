@@ -1,66 +1,23 @@
 import * as React from 'react';
-import { Button, View, Text } from 'react-native';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 30 }}>This is the home screen!</Text>
-      <Button
-        onPress={() => navigation.navigate('AuthScreen')}
-        title="Open Auth"
-      />
-    </View>
-  );
-}
-
-function DiscoverScreen({ navigation }) {
-  return (
-    <View>
-      <Text>Discover</Text>
-      <Button
-        onPress={() => navigation.navigate('AuthScreen')}
-        title="Open Auth"
-      />
-    </View>
-  );
-}
-
-function MenuScreen({ navigation }) {
-  return (
-    <View>
-      <Text>Menu</Text>
-    </View>
-  );
-}
-
-function MyLikesScreen({ navigation }) {
-  return (
-    <View>
-      <Text>My Likes</Text>
-    </View>
-  );
-}
-
-function HowToWearScreen({ navigation }) {
-  return (
-    <View>
-      <Text>How to Wear</Text>
-    </View>
-  );
-}
+import homeStack from './homeStack';
+import discoverStack from './discoverStack';
+import menuStack from './menuStack';
+import myLikesStack from './myLikesStack';
+import howToWearStack from './howToWearStack';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
   return (
-    <Tab.Navigator initialRouteName="Home">
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Discover" component={DiscoverScreen} />
-      <Tab.Screen name="Menu" component={MenuScreen} />
-      <Tab.Screen name="MyLikes" component={MyLikesScreen} />
-      <Tab.Screen name="HowToWear" component={HowToWearScreen} />
+    <Tab.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+      <Tab.Screen name="Home" component={homeStack} />
+      <Tab.Screen name="Discover" component={discoverStack}  />
+      <Tab.Screen name="Menu" component={menuStack} />
+      <Tab.Screen name="MyLikes" component={myLikesStack} />
+      <Tab.Screen name="HowToWear" component={howToWearStack} />
     </Tab.Navigator>
   )
 }

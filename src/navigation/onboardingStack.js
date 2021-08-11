@@ -1,8 +1,23 @@
 import * as React from 'react';
-import { Button, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useDispatch } from 'react-redux';
+import Button from './../components/atoms/button'
+import { store } from './../redux/store'
 
 const OnboardingStack = createNativeStackNavigator();
+
+function CompleteOnboardingButton({ text = 'Exit' }) {
+  const dispatch = useDispatch()
+
+  return (
+    <Button
+      style={{ padding: 1000 }}
+      onPress={() => dispatch({ type: 'ONBOARDING_COMPLETE' })}
+      title={ text }
+    />
+  )
+}
 
 function WelcomeScreen({ navigation}) {
   return (
@@ -11,10 +26,6 @@ function WelcomeScreen({ navigation}) {
       <Button
         onPress={() => navigation.navigate('QuestionScreen')}
         title="Next"
-      />
-      <Button
-        onPress={() => navigation.navigate('TabNavigator')}
-        title="Exit"
       />
     </View>
   );
@@ -28,10 +39,7 @@ function QuestionScreen({ navigation}) {
         onPress={() => navigation.navigate('SignInScreen')}
         title="Continue"
       />
-      <Button
-        onPress={() => navigation.navigate('TabNavigator')}
-        title="Exit"
-      />
+      <CompleteOnboardingButton />
     </View>
   );
 }
@@ -40,18 +48,17 @@ function SignInScreen({ navigation}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Sign In</Text>
+      <CompleteOnboardingButton text='COMPLETE Sign In'/>
+
       <Button
-        onPress={() => navigation.navigate('TabNavigator')}
-        title="Sign In"
-      />
-      <Button
-        onPress={() => navigation.navigate('OnboardingSignUpScreen')}
+        onPress={() => navigation.navigate('SignUpScreen')}
         title="Not registered - Sign Up"
       />
       <Button
-        onPress={() => navigation.navigate('TabNavigator')}
-        title="Exit"
+        onPress={() => navigation.navigate('Recover')}
+        title="Forgot my password - Sign In"
       />
+      <CompleteOnboardingButton />
     </View>
   );
 }
@@ -59,19 +66,30 @@ function SignInScreen({ navigation}) {
 function SignUpScreen({ navigation}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Sign In</Text>
+      <Text>Sign Up</Text>
+      <CompleteOnboardingButton text='COMPLETE Sign Up'/>
       <Button
-        onPress={() => navigation.navigate('TabNavigator')}
-        title="Sign Up"
-      />
-      <Button
-        onPress={() => navigation.navigate('TabNavigator')}
+        onPress={() => navigation.navigate('SignInScreen')}
         title="Already have an account - Sign In"
       />
+      <CompleteOnboardingButton />
+    </View>
+  );
+}
+
+function Recover({ navigation}) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Recover</Text>
       <Button
-        onPress={() => navigation.navigate('TabNavigator')}
-        title="Exit"
+        onPress={() => navigation.navigate('SignUpScreen')}
+        title="Dont have an account Sign Up"
       />
+      <Button
+        onPress={() => navigation.navigate('SignInScreen')}
+        title="Remembered your details - Sign In"
+      />
+      <CompleteOnboardingButton />
     </View>
   );
 }
@@ -83,6 +101,7 @@ export default function({ navigation }) {
       <OnboardingStack.Screen name="QuestionScreen" component={QuestionScreen} />
       <OnboardingStack.Screen name="SignInScreen" component={SignInScreen} />
       <OnboardingStack.Screen name="SignUpScreen" component={SignUpScreen} />
+      <OnboardingStack.Screen name="Recover" component={Recover} />
     </OnboardingStack.Navigator>
   );
 }
