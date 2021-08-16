@@ -23,7 +23,6 @@ export default function MyLikesPage({ navigation}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>My Likes</Text>
-      <Button title="PRETEND AUTH CHECK" onPress={ () => navigation.navigate('AuthScreen') } />
       <Products navigation={ navigation } />
     </View>
   );

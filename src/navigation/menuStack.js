@@ -5,12 +5,13 @@ import MenuPage from '../components/pages/tabNavigator/menu'
 import ProductDetails from '../components/pages/productDetails';
 import ProductListing from '../components/pages/productListing';
 import BrandProductListing from '../components/pages/brandDetails';
+import { HeaderOptions } from './headerOptions';
 
 const MenuStack = createNativeStackNavigator();
 
 export default function({ navigation }) {
   return (
-    <MenuStack.Navigator initialRouteName="DiscoverPage">
+    <MenuStack.Navigator initialRouteName="DiscoverPage"  screenOptions={ HeaderOptions}>
       <MenuStack.Screen name="MenuPage" component={MenuPage} />
       <MenuStack.Screen name="ProductDetails" component={ProductDetails} />
       <MenuStack.Screen name="ProductListing" component={ProductListing} />

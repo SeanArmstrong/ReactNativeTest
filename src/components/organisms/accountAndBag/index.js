@@ -9,6 +9,10 @@ export default function AccountAndBag({ route, navigation }) {
         title='Account'
         onPress={ () => { navigation.push('AccountScreen', { productId: Math.round(Math.random() * 1000) }) } }
       />
+      <Button
+        title='Bag'
+        onPress={ () => { navigation.push('PurchaseScreen') } }
+      />
     </View>
   );
 }

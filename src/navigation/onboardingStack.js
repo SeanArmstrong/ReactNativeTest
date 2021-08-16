@@ -3,17 +3,23 @@ import { View, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useDispatch } from 'react-redux';
 import Button from './../components/atoms/button'
-import { store } from './../redux/store'
 
 const OnboardingStack = createNativeStackNavigator();
 
-function CompleteOnboardingButton({ text = 'Exit' }) {
+function CompleteOnboardingButton({ text = 'Exit', auth = false }) {
   const dispatch = useDispatch()
 
   return (
     <Button
       style={{ padding: 1000 }}
-      onPress={() => dispatch({ type: 'ONBOARDING_COMPLETE' })}
+      onPress={() => {
+        dispatch({ type: 'ONBOARDING_COMPLETE' })
+
+        if (auth) {
+          dispatch({ type: 'LOGIN' })
+        }
+      }}
+
       title={ text }
     />
   )
@@ -45,10 +51,12 @@ function QuestionScreen({ navigation}) {
 }
 
 function SignInScreen({ navigation}) {
+  const dispatch = useDispatch()
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Sign In</Text>
-      <CompleteOnboardingButton text='COMPLETE Sign In'/>
+      <CompleteOnboardingButton text='COMPLETE Sign In' auth={ true } />
 
       <Button
         onPress={() => navigation.navigate('SignUpScreen')}
@@ -67,7 +75,7 @@ function SignUpScreen({ navigation}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Sign Up</Text>
-      <CompleteOnboardingButton text='COMPLETE Sign Up'/>
+      <CompleteOnboardingButton text='COMPLETE Sign Up' auth={ true } />
       <Button
         onPress={() => navigation.navigate('SignInScreen')}
         title="Already have an account - Sign In"

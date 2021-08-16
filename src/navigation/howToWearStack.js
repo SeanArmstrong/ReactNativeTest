@@ -6,14 +6,14 @@ import HowToWearDetailsPage from '../components/pages/howToWearDetails';
 import ProductDetails from '../components/pages/productDetails';
 import ProductListing from '../components/pages/productListing';
 import BrandProductListing from '../components/pages/brandDetails';
-
+import { HeaderOptions } from './headerOptions';
 
 
 const MenuStack = createNativeStackNavigator();
 
 export default function({ navigation }) {
   return (
-    <MenuStack.Navigator initialRouteName="HowToWearListingPage">
+    <MenuStack.Navigator initialRouteName="HowToWearListingPage"  screenOptions={ HeaderOptions}>
       <MenuStack.Screen name="HowToWearListingPage" component={HowToWearListingPage} />
       <MenuStack.Screen name="HowToWearDetailsPage" component={HowToWearDetailsPage} />
       <MenuStack.Screen name="ProductDetails" component={ProductDetails} />

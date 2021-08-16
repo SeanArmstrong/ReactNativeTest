@@ -12,8 +12,8 @@ const HomeStack = createNativeStackNavigator();
 
 export default function({ navigation }) {
   return (
-    <HomeStack.Navigator initialRouteName="HomePage">
-      <HomeStack.Screen name="HomePage" component={HomePage}  options={HeaderOptions} />
+    <HomeStack.Navigator initialRouteName="HomePage" screenOptions={ HeaderOptions }>
+      <HomeStack.Screen name="HomePage" component={HomePage} />
       <HomeStack.Screen name="ProductDetails" component={ProductDetailsPage} />
       <HomeStack.Screen name="ProductListing" component={ProductListingPage} />
       <HomeStack.Screen name="BrandProductListing" component={BrandProductListingPage} />

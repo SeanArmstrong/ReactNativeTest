@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AuthStack from './src/navigation/authStack'
 import AccountStack from './src/navigation/accountStack'
 import TabStack from './src/navigation/tabNavigator'
+import PurchaseStack from './src/navigation/purchaseStack'
 import OnboardingStack from './src/navigation/onboardingStack'
 import {Provider, useSelector} from 'react-redux';
 import {store} from './src/redux/store';
@@ -21,8 +22,8 @@ function Main() {
           <RootStack.Screen name="TabNavigator" component={TabStack} options={{ headerShown: false }} />
         </RootStack.Group>
         <RootStack.Group screenOptions={{ presentation: 'modal', headerShown: false }}>
-          <RootStack.Screen name="AuthScreen" component={AuthStack} />
           <RootStack.Screen name="AccountScreen" component={AccountStack} />
+          <RootStack.Screen name="PurchaseScreen" component={PurchaseStack} />
         </RootStack.Group>
       </RootStack.Navigator>
     )

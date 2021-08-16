@@ -8,12 +8,14 @@ import BrandProductListing from '../components/pages/brandDetails';
 import HowToWearDetailsPage from '../components/pages/howToWearDetails';
 
 const DiscoverStack = createNativeStackNavigator();
+import { HeaderOptions } from './headerOptions';
+
 
 export default function({ navigation }) {
   return (
-    <DiscoverStack.Navigator initialRouteName="DiscoverPage">
+    <DiscoverStack.Navigator initialRouteName="DiscoverPage" screenOptions={ HeaderOptions}>
       <DiscoverStack.Screen name="HowToWearDetailsPage" component={HowToWearDetailsPage} />
-      <DiscoverStack.Screen name="DiscoverPage" component={DiscoverPage} />
+    <DiscoverStack.Screen name="DiscoverPage" component={DiscoverPage} />
       <DiscoverStack.Screen name="ProductDetails" component={ProductDetails} />
       <DiscoverStack.Screen name="ProductListing" component={ProductListing} />
       <DiscoverStack.Screen name="BrandProductListing" component={BrandProductListing} />
